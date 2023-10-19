@@ -1,10 +1,11 @@
 package com.dovene.firststepskt
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatTextView
 
 class HelloActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,10 +16,25 @@ class HelloActivity : AppCompatActivity() {
     }
 
     private fun setViewItems() {
-        findViewById<AppCompatTextView>(R.id.login_tv).text = intent.extras?.getString("login")
+
+        // retrieve user input from previous activity
+        val loginValue = intent.extras?.getString(MainActivity.userLoginKey)
+        findViewById<TextView>(R.id.login_tv).text = loginValue
+
+        val emailValue = intent.extras?.getString(MainActivity.emailKey)
+        findViewById<TextView>(R.id.email_tv).text = emailValue
+
+        // set event on button to start next activity
         findViewById<AppCompatButton>(R.id.essentials_bt).setOnClickListener {
             val intent = Intent(this, AndroidEssentialsListActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

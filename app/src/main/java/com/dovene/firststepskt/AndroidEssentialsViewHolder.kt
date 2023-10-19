@@ -8,17 +8,18 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 class AndroidEssentialsViewHolder(itemView: View) : ViewHolder(itemView) {
     private var deleteIV: AppCompatImageView
     private var titleTV: AppCompatTextView
+    private var emailTV: AppCompatTextView
+
     init {
         deleteIV = itemView.findViewById(R.id.delete)
-        titleTV = itemView.findViewById(R.id.title)
+        titleTV = itemView.findViewById(R.id.login_tv)
+        emailTV = itemView.findViewById(R.id.email_tv)
     }
 
-    fun bind(
-        essential: String,
-        deleteCallback: AndroidEssentialsRecyclerViewAdapter.DeleteCallback
-    ) {
-        titleTV.text = essential
-        deleteIV.setOnClickListener { deleteCallback.onDelete(essential) }
+    fun bind(user: User, deleteUserCallback: DeleteUserCallback) {
+        titleTV.text = user.login
+        emailTV.text = user.email
+        deleteIV.setOnClickListener { deleteUserCallback.onDelete(user) }
     }
 
 

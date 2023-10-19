@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/hello"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:layout_height="wrap_content"
@@ -20,23 +20,28 @@
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/login_et"
         android:layout_width="match_parent"
-       app:layout_constraintTop_toBottomOf="@+id/hello"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="60dp"
         android:hint="@string/enter_your_name_to_access_the_system"
         android:gravity="center"
         android:layout_height="wrap_content"
     />
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/email_et"
+        android:layout_width="match_parent"
+        android:layout_marginTop="60dp"
+        android:hint="@string/enter_your_email_to_access_the_system"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_bt"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_et"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="40dp"
         android:text="@string/connexion"
         android:gravity="center"
         android:layout_height="wrap_content"
         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

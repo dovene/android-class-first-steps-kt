@@ -2,6 +2,8 @@
     <string name="app_name">FirstStepsKt</string>
     <string name="welcome">Welcome</string>
     <string name="enter_your_name_to_access_the_system">Enter your name to access the system</string>
+    <string name="enter_your_email_to_access_the_system">Enter your email to access the system</string>
     <string name="connexion">Connexion</string>
     <string name="display_android_essentials">display android essentials</string>
+    <string name="nimporte_quoi">nimporte quoi</string>
 </resources>

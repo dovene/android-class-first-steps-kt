@@ -5,22 +5,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 
-class AndroidEssentialsRecyclerViewAdapter(essentials: MutableList<String>, deleteCallback: DeleteCallback): Adapter<AndroidEssentialsViewHolder>() {
-    private var essentials = mutableListOf<String>()
-    private var deleteCallback: DeleteCallback
 
-    interface DeleteCallback {
-        fun onDelete(essential: String)
-    }
+class AndroidEssentialsRecyclerViewAdapter(users: MutableList<User>, deleteCallback: DeleteUserCallback): Adapter<AndroidEssentialsViewHolder>() {
+    private var users = mutableListOf<User>()
+    private var deleteCallback: DeleteUserCallback
+
 
    init {
-       this.essentials = essentials
+       this.users = users
        this.deleteCallback = deleteCallback
    }
 
-    fun setEssentials(essentials: MutableList<String>) {
-        this.essentials = essentials
+    fun setEssentials(essentials: MutableList<User>) {
+        this.users = essentials
         notifyDataSetChanged()
+    }
+
+    override fun getItemCount(): Int {
+        return  users.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AndroidEssentialsViewHolder {
@@ -29,11 +31,9 @@ class AndroidEssentialsRecyclerViewAdapter(essentials: MutableList<String>, dele
         return AndroidEssentialsViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-      return  essentials.size
-    }
+
 
     override fun onBindViewHolder(holder: AndroidEssentialsViewHolder, position: Int) {
-        holder.bind(essentials[position], deleteCallback)
+        holder.bind(users[position], deleteCallback)
     }
 }
