@@ -1,4 +1,4 @@
-package com.dovene.firststepskt
+package com.dovene.firststepskt.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import com.dovene.firststepskt.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,11 +28,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setViewItems() {
         findViewById<AppCompatButton>(R.id.login_bt).setOnClickListener {
+            //create an intent to start next activity
             val intent = Intent(this, HelloActivity::class.java)
+
             val userLogin = findViewById<AppCompatEditText>(R.id.login_et).text.toString()
             val email = findViewById<AppCompatEditText>(R.id.email_et).text.toString()
 
             if (userLogin == authorizedLogin && email == authorizedEmail) {
+                // store user information in intent extras to retrieve them from next activity
                 intent.putExtra(userLoginKey,userLogin)
                 intent.putExtra(emailKey,email)
                 startActivity(intent)

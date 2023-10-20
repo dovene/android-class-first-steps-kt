@@ -1,26 +1,16 @@
-package com.dovene.firststepskt
+package com.dovene.firststepskt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.dovene.firststepskt.R
+import com.dovene.firststepskt.model.User
+import com.dovene.firststepskt.repository.UserRepository
 
-class AndroidEssentialsListActivity : AppCompatActivity() {
+class UsersListActivity : AppCompatActivity() {
 
-    private lateinit var essentialsRecyclerViewAdapter: AndroidEssentialsRecyclerViewAdapter
-
-    // fake objects list for recycler view
-
-
-    private val users = mutableListOf(
-        User("Adnane","adnane@hb.com"),
-        User("Ewan","ewan@hb.com"),
-        User("IB","ib@hb.com"),
-        User("JP","jp@hb.com"),
-        User("Ryad","ryad@hb.com"),
-        User("Killian","killian@hb.com"),
-        User("Younous","younousan@hb.com"),
-    )
+    private lateinit var essentialsRecyclerViewAdapter: UsersRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,19 +22,19 @@ class AndroidEssentialsListActivity : AppCompatActivity() {
     private fun setViewItems() {
         val essentialsRecyclerView = findViewById<RecyclerView>(R.id.essentials_RV)
 
+        // instantiate recyclerview adapter
         essentialsRecyclerViewAdapter =
-            AndroidEssentialsRecyclerViewAdapter(
-                users,
+            UsersRecyclerViewAdapter(
+                UserRepository.users,
                 object : DeleteUserCallback {
                     override fun onDelete(user: User) {
-
-                        users.remove(user)
-                        essentialsRecyclerViewAdapter.setEssentials(users)
-
-
+                        // Delete selected user and refresh the list
+                        UserRepository.users.remove(user)
+                        essentialsRecyclerViewAdapter.setEssentials(UserRepository.users)
                     }
                 })
 
+        // set recyclerview required attributes
         essentialsRecyclerView.layoutManager = LinearLayoutManager(this)
         essentialsRecyclerView.adapter = essentialsRecyclerViewAdapter
     }

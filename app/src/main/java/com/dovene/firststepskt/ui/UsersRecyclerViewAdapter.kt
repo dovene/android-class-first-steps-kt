@@ -1,12 +1,14 @@
-package com.dovene.firststepskt
+package com.dovene.firststepskt.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.dovene.firststepskt.R
+import com.dovene.firststepskt.model.User
 
 
-class AndroidEssentialsRecyclerViewAdapter(users: MutableList<User>, deleteCallback: DeleteUserCallback): Adapter<AndroidEssentialsViewHolder>() {
+class UsersRecyclerViewAdapter(users: MutableList<User>, deleteCallback: DeleteUserCallback): Adapter<UsersViewHolder>() {
     private var users = mutableListOf<User>()
     private var deleteCallback: DeleteUserCallback
 
@@ -18,6 +20,7 @@ class AndroidEssentialsRecyclerViewAdapter(users: MutableList<User>, deleteCallb
 
     fun setEssentials(essentials: MutableList<User>) {
         this.users = essentials
+        // important to force list refresh
         notifyDataSetChanged()
     }
 
@@ -25,15 +28,14 @@ class AndroidEssentialsRecyclerViewAdapter(users: MutableList<User>, deleteCallb
         return  users.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AndroidEssentialsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.list_item, parent, false)
-        return AndroidEssentialsViewHolder(view)
+        return UsersViewHolder(view)
     }
 
 
-
-    override fun onBindViewHolder(holder: AndroidEssentialsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
         holder.bind(users[position], deleteCallback)
     }
 }

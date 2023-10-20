@@ -1,4 +1,6 @@
-package com.dovene.firststepskt
+package com.dovene.firststepskt.ui
+
+import com.dovene.firststepskt.model.User
 
 interface DeleteCallback {
     fun onDelete(essential: String)

@@ -1,4 +1,4 @@
-package com.dovene.firststepskt
+package com.dovene.firststepskt.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.dovene.firststepskt.R
 
 class HelloActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,7 @@ class HelloActivity : AppCompatActivity() {
 
         // set event on button to start next activity
         findViewById<AppCompatButton>(R.id.essentials_bt).setOnClickListener {
-            val intent = Intent(this, AndroidEssentialsListActivity::class.java)
+            val intent = Intent(this, UsersListActivity::class.java)
             startActivity(intent)
         }
     }
